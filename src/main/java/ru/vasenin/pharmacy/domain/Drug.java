@@ -17,7 +17,14 @@ public class Drug {
     private long id;
     private String title;
     private String description;
-    private int categoryId;
-    private int countryId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn()
+    private Country country ;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Category category;
+
 
 }

@@ -5,6 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class SimpleDrug<T> {
+public class SimpleResult<T> {
     private final T result;
 }
