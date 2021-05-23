@@ -51,6 +51,10 @@ public class DrugService {
         return drugRepository.findByTitleContaining(title);
     }
 
+    public List<Drug> sortByTitleAndDesc(String title, String description) {
+        return drugRepository.findByTitleContainingAndDescriptionContaining(title, description);
+    }
+
     public Page<Drug> getPage(int page) {
         return drugRepository.findAll(PageRequest.of(page, 5));
     }

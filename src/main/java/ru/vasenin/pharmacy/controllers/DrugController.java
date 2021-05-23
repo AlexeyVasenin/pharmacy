@@ -36,7 +36,7 @@ public class DrugController {
 
     @GetMapping("/pages/{num}")
     @ResponseBody
-    public SimpleDrug<Page<Drug>> getByPages(@PathVariable("num") String num){
+    public SimpleDrug<Page<Drug>> getByPages(@PathVariable("num") String num) {
         return new SimpleDrug<>(drugService.getPage(Integer.parseInt(num)));
     }
 
@@ -66,13 +66,29 @@ public class DrugController {
     @Setter
     public static class SortDrug {
         private String title;
-
     }
 
     @PostMapping("/sort")
+    @ResponseBody
     public SimpleDrug<List<Drug>> sort(@RequestBody SortDrug sortDrug) {
         return new SimpleDrug<>(drugService.sortByTitle(sortDrug.getTitle()));
     }
+
+
+    @Getter
+    @Setter
+    public static class SortDrugExtended {
+        private String title;
+        private String description;
+    }
+
+    @PostMapping("/sort/extended")
+    @ResponseBody
+    public SimpleDrug<List<Drug>> sortByTitleAndDesc(@RequestBody SortDrugExtended sortDrugExtended) {
+        return new SimpleDrug<>(drugService.sortByTitleAndDesc(sortDrugExtended.getTitle(),
+                sortDrugExtended.getDescription()));
+    }
+
 }
 
 

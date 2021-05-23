@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface DrugRepository extends JpaRepository<Drug, Long> {
     List<Drug> findByTitleContaining(String pattern);
+    List<Drug> findByTitleContainingAndDescriptionContaining(String title,
+                                                   String description);
 }
