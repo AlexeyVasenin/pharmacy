@@ -19,15 +19,13 @@ public class Drug {
     private String title;
     private String description;
     private String fcId;
-    private String fcCategoryId;
-    private String fcCountryId;
 
     @ManyToOne
-    @JoinColumn(name = "fcCountryId", referencedColumnName = "countryid")
+    @JoinColumn(name = "country_id")
     private Country country;
 
     @ManyToOne
-    @JoinColumn(name = "fcCategoryId", referencedColumnName = "categoryid")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @OneToMany(mappedBy = "drug", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
