@@ -16,6 +16,8 @@ public class Country {
     private long id;
     private String name;
 
-
+    @OneToMany(mappedBy = "country", cascade = CascadeType.PERSIST, fetch =
+            FetchType.EAGER)
+    private List<Drug> drugs;
 
 }

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,14 +18,18 @@ public class Drug {
     private long id;
     private String title;
     private String description;
+    private String fcId;
+    private String fcCategoryId;
+    private String fcCountryId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn()
-    private Country country ;
+    @ManyToOne
+    @JoinColumn(name = "fcCountryId", referencedColumnName = "countryid")
+    private Country country;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn
+    @ManyToOne
+    @JoinColumn(name = "fcCategoryId", referencedColumnName = "categoryid")
     private Category category;
 
-
+    @OneToMany(mappedBy = "drug", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private List<Ingredient> ingredients;
 }

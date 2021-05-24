@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface DrugRepository extends JpaRepository<Drug, Long> {
 
-    List<Drug> findByTitleContainingAndDescriptionContaining(String title,
-                                                   String description);
+    List<Drug> findByTitleContainingIgnoreCaseAndDescriptionContainingIgnoreCase(String title,
+                                                                                 String description);
 }

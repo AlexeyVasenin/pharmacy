@@ -5,7 +5,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import ru.vasenin.pharmacy.controllers.DrugController;
-import ru.vasenin.pharmacy.domain.Country;
 import ru.vasenin.pharmacy.domain.Drug;
 import ru.vasenin.pharmacy.repository.DrugRepository;
 
@@ -24,7 +23,6 @@ public class DrugService {
 
     public List<Drug> getAll() {
         return drugRepository.findAll();
-
     }
 
     public Drug getOne(long id) {
@@ -32,12 +30,9 @@ public class DrugService {
     }
 
     public Drug save(DrugController.SaveDrugReqt reqt) {
-
-
         Drug drug = new Drug();
         drug.setTitle(reqt.getTitle());
         drug.setDescription(reqt.getDescription());
-
 
         return update(drug);
     }
@@ -47,7 +42,7 @@ public class DrugService {
     }
 
     public List<Drug> sortByTitleAndDesc(String title, String description) {
-        return drugRepository.findByTitleContainingAndDescriptionContaining(title, description);
+        return drugRepository.findByTitleContainingIgnoreCaseAndDescriptionContainingIgnoreCase(title, description);
     }
 
     public Page<Drug> getPage(int page) {

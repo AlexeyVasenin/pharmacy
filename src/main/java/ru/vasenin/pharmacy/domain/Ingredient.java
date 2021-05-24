@@ -16,7 +16,9 @@ public class Ingredient {
     private long id;
     private String title;
 
-
+    @ManyToOne
+    @JoinColumn(name="fcId", referencedColumnName = "fcid")
+   private Drug drug;
 
 
 
