@@ -18,16 +18,13 @@ public class Drug {
     private long id;
     private String title;
     private String description;
-    private String fcId;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
+    @ManyToOne(cascade = CascadeType.ALL)
     private Country country;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+    @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
 
-    @OneToMany(mappedBy = "drug", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany
     private List<Ingredient> ingredients;
 }

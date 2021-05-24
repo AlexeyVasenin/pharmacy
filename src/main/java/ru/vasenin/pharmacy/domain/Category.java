@@ -16,11 +16,6 @@ public class Category {
     private long id;
     private String title;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST, fetch =
-            FetchType.EAGER)
-    private List<Drug> drugs;
-
-
-
-
+    //@OneToMany(mappedBy = "category")
+    //private List<Drug> drugs;
 }
