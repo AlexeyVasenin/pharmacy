@@ -1,5 +1,6 @@
 package ru.vasenin.pharmacy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,8 @@ public class Country {
     @GeneratedValue
     private long id;
     private String name;
-    //
-    //@OneToMany(mappedBy = "country")
-    //private List<Drug> drugs;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "country")
+    private List<Drug> drugs;
 }

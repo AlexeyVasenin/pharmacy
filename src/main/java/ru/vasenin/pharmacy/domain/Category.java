@@ -1,5 +1,6 @@
 package ru.vasenin.pharmacy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,7 @@ public class Category {
     private long id;
     private String title;
 
-    //@OneToMany(mappedBy = "category")
-    //private List<Drug> drugs;
+    @JsonIgnore
+    @OneToMany(mappedBy = "category")
+    private List<Drug> drugs;
 }

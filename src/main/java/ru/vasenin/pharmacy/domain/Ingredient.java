@@ -1,5 +1,6 @@
 package ru.vasenin.pharmacy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +17,7 @@ public class Ingredient {
     private long id;
     private String title;
 
-
+    @JsonIgnore
+    @ManyToMany
+    List<Drug> drugs;
 }
